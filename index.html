@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hotel Room Booking</title>
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div class="side-panel">
+            <div class="title">Navigation</div>
+            <div class="create"><a href="#create-section">Create</a></div>
+            <div class="edit"><a href="#edit-section">Edit</a></div>
+            <div class="view"><a href="#view-section">View</a></div>
+            <div class="delete"><a href="#delete-section">Delete</a></div>
+        </div>
+
+        <button onclick="openPanel()">Open Panel</button>
+
+        <section id="create-section">
+            <h1>Add a new Booking</h1>
+            <form onsubmit="bookRoom(event)">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+
+                <label for="room-type">Room Type:</label>
+                <select id="room-type" name="room-type" required>
+                    <option value="">-- Select Room Type --</option>
+                    <option value="A">Type A (100 Rs per hour)</option>
+                    <option value="B">Type B (80 Rs per hour)</option>
+                    <option value="C">Type C (50 Rs per hour)</option>
+                </select>
+
+                <label for="room-number">Room Number:</label>
+                <input
+                    type="text"
+                    id="room-number"
+                    name="room-number"
+                    required
+                />
+
+                <label for="start-time">Start Time:</label>
+                <input
+                    type="datetime-local"
+                    id="start-time"
+                    name="start-time"
+                    required
+                />
+
+                <label for="end-time">End Time:</label>
+                <input
+                    type="datetime-local"
+                    id="end-time"
+                    name="end-time"
+                    required
+                />
+
+                <input type="submit" value="Book Room" />
+            </form>
+        </section>
+
+        <section id="edit-section">
+            <div>
+                <h1>Edit Booking</h1>
+                <form id="edit-booking-form">
+                    <label for="email">User Email:</label>
+                    <input type="text" id="email" name="email" required />
+                    <button type="submit">Search</button>
+                </form>
+                <div id="booking-details" style="display: none">
+                    <h3>Booking Details</h3>
+                    <form id="update-booking-form">
+                        <input
+                            type="hidden"
+                            id="booking-id"
+                            name="booking-id"
+                        />
+                        <label for="room-type">Room Type:</label>
+                        <select id="room-type" name="room-type" required>
+                            <option value="">Select Room Type</option>
+                            <option value="Single">Single</option>
+                            <option value="Double">Double</option>
+                            <option value="Suite">Suite</option>
+                        </select>
+                        <br />
+                        <label for="start-time">Start Time:</label>
+                        <input
+                            type="datetime-local"
+                            id="start-time"
+                            name="start-time"
+                            required
+                        />
+                        <br />
+                        <label for="end-time">End Time:</label>
+                        <input
+                            type="datetime-local"
+                            id="end-time"
+                            name="end-time"
+                            required
+                        />
+                        <br />
+                        <button type="submit">Update</button>
+                        <button type="button" id="cancel-btn">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-section">
+            <div>
+                <h1>View Bookings</h1>
+
+                <label for="buttons">Apply Filter</label>
+                <select id="buttons" required>
+                    <option value=""><h2>Select filter</h2></option>
+                    <option value="RoomNumber">Room Number</option>
+                    <option value="RoomType">Room Type</option>
+                </select>
+
+                <button id="view-btn" on>View</button>
+                <!-- <table id="booking-table">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Room Number</th>
+                            <th>Room Type</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table> -->
+            </div>
+        </section>
+
+        <section id="delete-section">
+            <h1>Delete Booking</h1>
+            <form id="delete-form">
+                <label for="booking-id">Booking ID:</label>
+                <input type="text" id="booking-id" name="booking-id" required />
+
+                <label for="refund-amount">Refund Amount:</label>
+                <input
+                    type="text"
+                    id="refund-amount"
+                    name="refund-amount"
+                    readonly
+                />
+
+                <button type="button" id="calculate-refund-btn">
+                    Calculate Refund
+                </button>
+                <button type="submit">Delete Booking</button>
+            </form>
+        </section>
+
+        <script src="script/scripts.js"></script>
+    </body>
+</html>
